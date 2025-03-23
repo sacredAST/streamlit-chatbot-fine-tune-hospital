@@ -1,8 +1,6 @@
-# Chat Bot (GPT-3.5) using Streamlit and OpenAI
+# Chat Bot using Streamlit and AzureOpenAI
 
-This is a simple Python application that creates a chatbot powered by the GPT-3.5 model using the Streamlit framework for the user interface. The chatbot can engage in conversations and answer questions based on the user's input. 
-
-![Sample Output](sample.png)
+This is a simple Python application that creates a chatbot powered by the fine-tuned model using the Streamlit framework for the user interface. The chatbot can engage in conversations and answer questions based on the user's input. 
 
 ## Prerequisites
 
@@ -29,7 +27,6 @@ pip install streamlit openai toml
 
     ```toml
     # secrets.toml
-    OPENAI_API_KEY = "YOUR_OPENAI_API_KEY_HERE"
     ```
 
 4. Create a Python script (e.g., `app.py`) and paste the provided code into this script.
@@ -52,14 +49,14 @@ pip install streamlit openai toml
 
 5. The conversation history will be displayed in the chat interface, with user and assistant messages shown.
 
-6. The chatbot is powered by the GPT-3.5 model, and it can provide responses based on the context of the conversation.
+6. The chatbot is powered by the fine-tuned model, and it can provide responses based on the context of the conversation.
 
 7. To stop the chatbot, simply close the Streamlit interface or the terminal where it's running.
 
 ## Customization
 
-- You can customize the chatbot's behavior by modifying the GPT-3.5 model settings or adding additional logic to handle specific user inputs.
+- You can customize the chatbot's behavior by modifying the fine-tuned model settings or adding additional logic to handle specific user inputs.
 
 - You can also add more conversation messages or prompts in the code to make the chatbot respond to various queries and topics.
 
-Enjoy using your Chat Bot powered by GPT-3.5! Feel free to enhance and customize it further to suit your specific needs and requirements.
+Enjoy using your Chat Bot powered by fine-tuned! Feel free to enhance and customize it further to suit your specific needs and requirements.
