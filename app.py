@@ -1,19 +1,16 @@
 from openai import AzureOpenAI
 import streamlit as st
-import toml
-
-secrets = toml.load("streamlit/secrets.toml")
 
 st.title("Chat Bot with Fine-tuned model (Hospital-ws-bot)")
 
 client = AzureOpenAI(
-    azure_endpoint = secrets["AZURE_OPENAI_API_URL"], 
-    api_key=secrets["AZURE_OPENAI_API_KEY"], 
-    api_version=secrets["AZURE_OPENAI_API_VERSION"]
+    azure_endpoint = st.secrets["AZURE_OPENAI_API_URL"], 
+    api_key=st.secrets["AZURE_OPENAI_API_KEY"], 
+    api_version=st.secrets["AZURE_OPENAI_API_VERSION"]
 )
 
 if "openai_model" not in st.session_state:
-    st.session_state["openai_model"] = secrets["FINE_TUNED_MODEL_NAME"]
+    st.session_state["openai_model"] = st.secrets["FINE_TUNED_MODEL_NAME"]
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
