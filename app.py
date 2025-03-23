@@ -1,4 +1,3 @@
-import openai
 from openai import AzureOpenAI
 import streamlit as st
 import toml
@@ -6,8 +5,6 @@ import toml
 secrets = toml.load("streamlit/secrets.toml")
 
 st.title("Chat Bot with Fine-tuned model (Hospital-ws-bot)")
-
-openai.api_key = secrets["OPENAI_API_KEY"]
 
 client = AzureOpenAI(
     azure_endpoint = secrets["AZURE_OPENAI_API_URL"], 
@@ -33,7 +30,7 @@ if prompt := st.chat_input("What is up?"):
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = ""
-        for response in openai.ChatCompletion.create(
+        for response in client.chat.completions.create(
             model=st.session_state["openai_model"],
             messages=[
                 {"role": m["role"], "content": m["content"]}
@@ -41,7 +38,7 @@ if prompt := st.chat_input("What is up?"):
             ],
             stream=True,
         ):
-            full_response += response.choices[0].delta.get("content", "")
+            full_response += response.choices[0].message.content
             message_placeholder.markdown(full_response + "▌")
         message_placeholder.markdown(full_response)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
